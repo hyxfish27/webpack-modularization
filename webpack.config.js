@@ -7,22 +7,24 @@ module.exports = {
     path: path.resolve(__dirname, 'dist/')
 
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       // css-loader
-  //     },
-  //     {
-  //       // file-loader
-  //     },
-  //     {
-  //       // vue-loader ??
-  //     },
-  //     {
-  //       // typescript-loader ??
-  //     }
-  //   ]
-  // },
+  module: {
+    rules: [
+      {
+        // css-loader
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        // file-loader
+      },
+      {
+        // vue-loader ??
+      },
+      {
+        // typescript-loader ??
+      }
+    ]
+  },
   // plugin: []
   devServer: {
     port: 9090

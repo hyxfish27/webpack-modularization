@@ -65,6 +65,16 @@ module.exports = {
     minimizer: [
       new CssMinimizerWebpackPlugin(),
       new TerserWebpackPlugin()
-    ]
-  }
+    ],
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          name: 'vendors'
+        }
+      }
+    }
+  },
+  devtool: 'inline-source-map'
 }

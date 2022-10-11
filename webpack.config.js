@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+// const TerserWebpackPlugin = require('terser-webpack-plugin')
+
 const path = require('path')
 
 module.exports = {
@@ -23,11 +25,24 @@ module.exports = {
         use: ['file-loader']
       },
       {
-        // vue-loader ??
-      },
-      {
-        // typescript-loader ??
+        // swc loader
+        test: /\.m?js$/,
+        use: {
+          loader: 'swc-loader'
+        },
+        exclude: /(node_modules|bower_components)/
       }
+      // {
+      // babel loader
+      //   test: /\.m?js$/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: ['@babel/preset-env']
+      //     }
+      //   },
+      //   exclude: /(node_modules|bower_components)/
+      // }
     ]
   },
   plugins: [
@@ -41,8 +56,10 @@ module.exports = {
     port: 9090
   },
   optimization: {
+    // minimize: true,
     minimizer: [
       new CssMinimizerWebpackPlugin()
+      // new TerserWebpackPlugin()
     ]
   }
 }

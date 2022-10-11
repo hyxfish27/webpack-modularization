@@ -1,14 +1,21 @@
 import './style.css'
-import { arrowFunc, Person } from './component/es6'
+import { imgGenerator } from './component/imgGenerator'
+import { arrowFunc, Person, append } from './component/es6'
+import imgPic from './img/meme.png'
 
-const { body } = document
-
-const el = document.createElement('p')
-el.innerText = 'hmmmm......'
-
-body.appendChild(el)
+const img = imgGenerator(imgPic)
+document.body.appendChild(img)
 
 arrowFunc()
 
 const Vicky = new Person('Vicky')
 Vicky.introduce()
+
+const students = [{
+  id: 0,
+  name: 'Ryan',
+  age: 18
+}]
+
+const appendStudent = append(students, { id: 1, name: 'Vicky', age: 17 })
+console.log(appendStudent)

@@ -11,3 +11,7 @@ export class Person {
     console.log(`Hi, I am ${this.name}`)
   }
 }
+
+export const append = (store, item) => {
+  return [...store, item]
+}

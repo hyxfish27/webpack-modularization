@@ -55,9 +55,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.[contenthash].css'
     }),
-    new CssMinimizerWebpackPlugin()
+    new CssMinimizerWebpackPlugin(),
+    new TerserWebpackPlugin()
   ],
   devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist/')
+    },
     port: 9090
   },
   optimization: {
@@ -76,5 +80,6 @@ module.exports = {
       }
     }
   },
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+  performance: { hints: false }
 }
